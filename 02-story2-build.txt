@@ -1,0 +1,7 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> campus-tickets-hw3@1.0.0 build
+> node scripts/build.mjs
+
+Build successful: static assets, server JavaScript syntax, specifications, and Vercel configuration checked.
+No bundler required: native ES modules + Vercel Node function. Deployment has not been verified by this build.
