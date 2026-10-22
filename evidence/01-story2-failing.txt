@@ -1,0 +1,468 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> campus-tickets-hw3@1.0.0 test
+> node --test
+
+✔ AC1: the catalog includes event details, prices, and availability (0.735242ms)
+✔ AC2: a new store contains three events with valid inventory and integer prices (0.187799ms)
+✖ AC3: a valid request returns a confirmation and simulated total (1.026455ms)
+✖ AC4: an unknown event is rejected without changing inventory (1.020416ms)
+✖ AC5: quantity 0 is rejected without changing inventory (0.213847ms)
+✖ AC5: quantity -1 is rejected without changing inventory (0.145566ms)
+✖ AC5: quantity 1.5 is rejected without changing inventory (0.120909ms)
+✖ AC5: quantity 5 is rejected without changing inventory (0.154029ms)
+✖ AC5: quantity "2" is rejected without changing inventory (0.106688ms)
+✖ AC6: a blank name is rejected (0.120309ms)
+✖ AC6: a name longer than 80 characters is rejected (0.240096ms)
+✖ AC6: an 80-character name is accepted and names are trimmed (0.380395ms)
+✖ AC7: an unconfirmed simulated payment is rejected (0.243191ms)
+✖ AC8: sold-out inventory cannot be oversold (0.139317ms)
+✖ AC9: retrying the same request returns the same confirmation and reduces capacity once (0.20885ms)
+✖ AC10: reusing a request ID with a different payload is rejected (0.113548ms)
+✖ AC11: accepted tickets are deducted exactly once (0.128961ms)
+✖ SEC-1: a missing request ID is rejected (0.180779ms)
+✖ SEC-1: a null reservation body is rejected (0.122222ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 2
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 104.53448
+
+✖ failing tests:
+
+test at tests/reservations.test.js:6:1
+✖ AC3: a valid request returns a confirmation and simulated total (1.026455ms)
+  Error: Reservations are not implemented yet.
+      at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:6:105)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    status: 501
+  }
+
+test at tests/reservations.test.js:7:1
+✖ AC4: an unknown event is rejected without changing inventory (1.020416ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:7:76)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:7:76)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:8:42
+✖ AC5: quantity 0 is rejected without changing inventory (0.213847ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:8:42
+✖ AC5: quantity -1 is rejected without changing inventory (0.145566ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:8:42
+✖ AC5: quantity 1.5 is rejected without changing inventory (0.120909ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:8:42
+✖ AC5: quantity 5 is rejected without changing inventory (0.154029ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:8:42
+✖ AC5: quantity "2" is rejected without changing inventory (0.106688ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:8:137)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:9:1
+✖ AC6: a blank name is rejected (0.120309ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:9:45)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:9:45)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:10:1
+✖ AC6: a name longer than 80 characters is rejected (0.240096ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:10:65)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:10:65)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:11:1
+✖ AC6: an 80-character name is accepted and names are trimmed (0.380395ms)
+  Error: Reservations are not implemented yet.
+      at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:11:104)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    status: 501
+  }
+
+test at tests/reservations.test.js:12:1
+✖ AC7: an unconfirmed simulated payment is rejected (0.243191ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:12:65)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:12:65)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:13:1
+✖ AC8: sold-out inventory cannot be oversold (0.139317ms)
+  Error: Reservations are not implemented yet.
+      at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:13:114)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    status: 501
+  }
+
+test at tests/reservations.test.js:14:1
+✖ AC9: retrying the same request returns the same confirmation and reduces capacity once (0.20885ms)
+  Error: Reservations are not implemented yet.
+      at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:14:149)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    status: 501
+  }
+
+test at tests/reservations.test.js:15:1
+✖ AC10: reusing a request ID with a different payload is rejected (0.113548ms)
+  Error: Reservations are not implemented yet.
+      at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:15:114)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    status: 501
+  }
+
+test at tests/reservations.test.js:16:1
+✖ AC11: accepted tickets are deducted exactly once (0.128961ms)
+  Error: Reservations are not implemented yet.
+      at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:16:99)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    status: 501
+  }
+
+test at tests/reservations.test.js:17:1
+✖ SEC-1: a missing request ID is rejected (0.180779ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:17:55)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:17:55)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/reservations.test.js:18:1
+✖ SEC-1: a null reservation body is rejected (0.122222ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  Error: Reservations are not implemented yet.
+      at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:18:58)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Reservations are not implemented yet.
+        at Object.reserve (file:///workspace/scratch/ec3444527189/campus-tickets/lib/store.js:14:23)
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:109
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:5:90)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/reservations.test.js:18:58)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    operator: 'throws',
+    diff: 'simple'
+  }

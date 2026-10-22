@@ -1,0 +1,18 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createStore } from '../lib/store.js';
+const request = (changes = {}) => ({eventId:'fall-social',name:'Alex Tartan',quantity:2,simulatedPayment:true,requestId:'request-0001',...changes});
+const rejected = (store, payload, status) => { const before = store.listEvents(); assert.throws(() => store.reserve(payload), error => error.status === status); assert.deepEqual(store.listEvents(), before); };
+test('AC3: a valid request returns a confirmation and simulated total', () => { const b = createStore().reserve(request()); assert.ok(b.id); assert.equal(b.totalCents,2400); assert.equal(b.quantity,2); assert.equal(b.name,'Alex Tartan'); });
+test('AC4: an unknown event is rejected without changing inventory', () => rejected(createStore(),request({eventId:'missing'}),404));
+for (const quantity of [0,-1,1.5,5,'2']) test(`AC5: quantity ${JSON.stringify(quantity)} is rejected without changing inventory`, () => rejected(createStore(),request({quantity}),400));
+test('AC6: a blank name is rejected', () => rejected(createStore(),request({name:'   '}),400));
+test('AC6: a name longer than 80 characters is rejected', () => rejected(createStore(),request({name:'a'.repeat(81)}),400));
+test('AC6: an 80-character name is accepted and names are trimmed', () => { assert.equal(createStore().reserve(request({name:'a'.repeat(80)})).name.length,80); assert.equal(createStore().reserve(request({name:' Alex '})).name,'Alex'); });
+test('AC7: an unconfirmed simulated payment is rejected', () => rejected(createStore(),request({simulatedPayment:false}),400));
+test('AC8: sold-out inventory cannot be oversold', () => { const store=createStore(); for(let i=0;i<6;i++) store.reserve(request({quantity:4,requestId:`sellout-${i}`})); rejected(store,request({requestId:'one-too-many'}),409); });
+test('AC9: retrying the same request returns the same confirmation and reduces capacity once', () => { const store=createStore(); const first=store.reserve(request()); assert.deepEqual(store.reserve(request()), first); assert.equal(store.listEvents()[0].remaining,22); });
+test('AC10: reusing a request ID with a different payload is rejected', () => { const store=createStore(); store.reserve(request()); rejected(store,request({quantity:3}),409); });
+test('AC11: accepted tickets are deducted exactly once', () => { const store=createStore(); store.reserve(request({quantity:3})); assert.equal(store.listEvents()[0].remaining,21); });
+test('SEC-1: a missing request ID is rejected', () => rejected(createStore(),request({requestId:undefined}),400));
+test('SEC-1: a null reservation body is rejected', () => rejected(createStore(),null,400));
