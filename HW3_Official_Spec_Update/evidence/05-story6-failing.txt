@@ -1,0 +1,159 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> campus-tickets-hw3@1.0.0 test
+> node --test
+
+✔ AC1: the catalog includes event details, prices, and availability (0.861766ms)
+✔ AC2: a new store contains three events with valid inventory and integer prices (0.240972ms)
+✖ Story 6: scanning a valid ticket marks it used (1.660256ms)
+✖ Story 6: a later scan of the same ticket is rejected as Already used (0.292931ms)
+✖ Story 6: separate tickets in one order can each be checked in once (0.224998ms)
+✖ Story 6: an invalid ticket is rejected without consuming a valid ticket (1.124371ms)
+✖ Story 6: an empty scanner input is rejected (0.271999ms)
+✖ Story 6 HTTP: the same ticket receives 200 then 409 through the check-in API (47.751824ms)
+✔ HTTP: the catalog route returns fresh JSON (31.94303ms)
+✔ HTTP: Vercel rewrite query routes reach the catalog (8.748744ms)
+✔ HTTP: booking ignores a forged total and returns confirmation (14.530076ms)
+✔ HTTP: invalid JSON returns 400 rather than creating a reservation (9.924892ms)
+✔ HTTP: a non-POST booking request is rejected (3.447834ms)
+✔ HTTP: a body larger than 8 KiB returns 413 (3.293783ms)
+✔ HTTP: server validation rejects an over-cap quantity (3.583878ms)
+✔ AC3: a valid request returns a confirmation and simulated total (1.966467ms)
+✔ AC4: an unknown event is rejected without changing inventory (1.514847ms)
+✔ AC5: quantity 0 is rejected without changing inventory (0.223596ms)
+✔ AC5: quantity -1 is rejected without changing inventory (0.275755ms)
+✔ AC5: quantity 1.5 is rejected without changing inventory (0.171228ms)
+✔ AC5: quantity 5 is rejected without changing inventory (0.139049ms)
+✔ AC5: quantity "2" is rejected without changing inventory (0.183897ms)
+✔ AC6: a blank name is rejected (0.247192ms)
+✔ AC6: a name longer than 80 characters is rejected (0.220701ms)
+✔ AC6: an 80-character name is accepted and names are trimmed (0.314963ms)
+✔ AC7: an unconfirmed simulated payment is rejected (0.343507ms)
+✔ AC8: sold-out inventory cannot be oversold (0.335765ms)
+✔ AC9: retrying the same request returns the same confirmation and reduces capacity once (0.168494ms)
+✔ AC10: reusing a request ID with a different payload is rejected (0.145869ms)
+✔ AC11: accepted tickets are deducted exactly once (0.11978ms)
+✔ SEC-1: a missing request ID is rejected (0.160551ms)
+✔ SEC-1: a null reservation body is rejected (0.644139ms)
+✔ SEC-4: the server ignores a forged browser total and computes its own price (1.185603ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 27
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 215.675786
+
+✖ failing tests:
+
+test at tests/checkin.test.js:7:1
+✖ Story 6: scanning a valid ticket marks it used (1.660256ms)
+  TypeError: Cannot read properties of undefined (reading '0')
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:7:171)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests/checkin.test.js:8:1
+✖ Story 6: a later scan of the same ticket is rejected as Already used (0.292931ms)
+  TypeError: Cannot read properties of undefined (reading '0')
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:8:180)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/checkin.test.js:9:1
+✖ Story 6: separate tickets in one order can each be checked in once (0.224998ms)
+  TypeError: Cannot read properties of undefined (reading 'length')
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:9:171)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/checkin.test.js:10:1
+✖ Story 6: an invalid ticket is rejected without consuming a valid ticket (1.124371ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  TypeError: store.checkIn is not a function
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:10:149)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: store.checkIn is not a function
+        at assert.equal.store.checkIn.token (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:10:168)
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:10:149)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/checkin.test.js:11:1
+✖ Story 6: an empty scanner input is rejected (0.271999ms)
+  AssertionError [ERR_ASSERTION]: The validation function is expected to return "true". Received false
+  
+  Caught error:
+  
+  TypeError: store.checkIn is not a function
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:11:95)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: store.checkIn is not a function
+        at file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:11:114
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:11:95)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/checkin.test.js:12:1
+✖ Story 6 HTTP: the same ticket receives 200 then 409 through the check-in API (47.751824ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/ec3444527189/campus-tickets/tests/checkin.test.js:19:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

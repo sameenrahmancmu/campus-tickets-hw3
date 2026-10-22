@@ -1,0 +1,40 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> campus-tickets-hw3@1.0.0 test
+> node --test
+
+✔ AC1: the catalog includes event details, prices, and availability (1.027887ms)
+✔ AC2: a new store contains three events with valid inventory and integer prices (0.326935ms)
+✔ HTTP: the catalog route returns fresh JSON (36.027078ms)
+✔ HTTP: Vercel rewrite query routes reach the catalog (8.352835ms)
+✔ HTTP: booking ignores a forged total and returns confirmation (15.662102ms)
+✔ HTTP: invalid JSON returns 400 rather than creating a reservation (7.32545ms)
+✔ HTTP: a non-POST booking request is rejected (3.021307ms)
+✔ HTTP: a body larger than 8 KiB returns 413 (3.322986ms)
+✔ HTTP: server validation rejects an over-cap quantity (3.121146ms)
+✔ AC3: a valid request returns a confirmation and simulated total (1.86504ms)
+✔ AC4: an unknown event is rejected without changing inventory (1.25881ms)
+✔ AC5: quantity 0 is rejected without changing inventory (0.284482ms)
+✔ AC5: quantity -1 is rejected without changing inventory (0.197883ms)
+✔ AC5: quantity 1.5 is rejected without changing inventory (0.162021ms)
+✔ AC5: quantity 5 is rejected without changing inventory (0.132106ms)
+✔ AC5: quantity "2" is rejected without changing inventory (0.147269ms)
+✔ AC6: a blank name is rejected (0.174289ms)
+✔ AC6: a name longer than 80 characters is rejected (0.210633ms)
+✔ AC6: an 80-character name is accepted and names are trimmed (0.270902ms)
+✔ AC7: an unconfirmed simulated payment is rejected (0.218435ms)
+✔ AC8: sold-out inventory cannot be oversold (0.416959ms)
+✔ AC9: retrying the same request returns the same confirmation and reduces capacity once (0.184203ms)
+✔ AC10: reusing a request ID with a different payload is rejected (0.177624ms)
+✔ AC11: accepted tickets are deducted exactly once (0.152446ms)
+✔ SEC-1: a missing request ID is rejected (0.232055ms)
+✔ SEC-1: a null reservation body is rejected (0.218084ms)
+✔ SEC-4: the server ignores a forged browser total and computes its own price (1.514099ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 198.102918

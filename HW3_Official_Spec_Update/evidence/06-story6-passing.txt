@@ -1,0 +1,47 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> campus-tickets-hw3@1.0.0 test
+> node --test
+
+✔ AC1: the catalog includes event details, prices, and availability (1.027064ms)
+✔ AC2: a new store contains three events with valid inventory and integer prices (0.376245ms)
+✔ Story 6: scanning a valid ticket marks it used (1.6094ms)
+✔ Story 6: a later scan of the same ticket is rejected as Already used (0.470618ms)
+✔ Story 6: separate tickets in one order can each be checked in once (0.280913ms)
+✔ Story 6: an invalid ticket is rejected without consuming a valid ticket (0.239059ms)
+✔ Story 6: an empty scanner input is rejected (0.16651ms)
+✔ Story 6 HTTP: the same ticket receives 200 then 409 through the check-in API (37.201029ms)
+✔ HTTP: the catalog route returns fresh JSON (26.911306ms)
+✔ HTTP: Vercel rewrite query routes reach the catalog (6.451138ms)
+✔ HTTP: booking ignores a forged total and returns confirmation (12.06431ms)
+✔ HTTP: invalid JSON returns 400 rather than creating a reservation (5.182521ms)
+✔ HTTP: a non-POST booking request is rejected (6.667052ms)
+✔ HTTP: a body larger than 8 KiB returns 413 (2.818848ms)
+✔ HTTP: server validation rejects an over-cap quantity (7.405012ms)
+✔ AC3: a valid request returns a confirmation and simulated total (1.696816ms)
+✔ AC4: an unknown event is rejected without changing inventory (0.903308ms)
+✔ AC5: quantity 0 is rejected without changing inventory (0.145669ms)
+✔ AC5: quantity -1 is rejected without changing inventory (0.278059ms)
+✔ AC5: quantity 1.5 is rejected without changing inventory (0.149275ms)
+✔ AC5: quantity 5 is rejected without changing inventory (0.095163ms)
+✔ AC5: quantity "2" is rejected without changing inventory (0.114492ms)
+✔ AC6: a blank name is rejected (0.145349ms)
+✔ AC6: a name longer than 80 characters is rejected (0.241503ms)
+✔ AC6: an 80-character name is accepted and names are trimmed (0.310036ms)
+✔ AC7: an unconfirmed simulated payment is rejected (0.19283ms)
+✔ AC8: sold-out inventory cannot be oversold (0.553311ms)
+✔ AC9: retrying the same request returns the same confirmation and reduces capacity once (0.25954ms)
+✔ AC10: reusing a request ID with a different payload is rejected (0.136164ms)
+✔ AC11: accepted tickets are deducted exactly once (0.105388ms)
+✔ SEC-1: a missing request ID is rejected (0.20602ms)
+✔ SEC-1: a null reservation body is rejected (0.121643ms)
+✔ SEC-4: the server ignores a forged browser total and computes its own price (2.027939ms)
+✔ SEC-8: a browser-supplied amount cannot change the simulated total (0.234092ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196.133175
