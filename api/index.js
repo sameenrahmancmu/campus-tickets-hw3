@@ -9,7 +9,7 @@ export function createHandler(data = store) {
     const path = url.searchParams.has('route') ? '/api/' + url.searchParams.get('route') : url.pathname.replace(/\/$/, '');
     try {
       if (req.method === 'GET' && path === '/api/events') return send(200, { events: data.listEvents() });
-      if (path !== '/api/bookings') return send(404, { error: 'Route not found.' });
+      if (!['/api/bookings', '/api/checkin'].includes(path)) return send(404, { error: 'Route not found.' });
       if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return send(405, { error: 'Use POST for reservations.' }); }
       let body;
       if (req.body !== undefined) {
@@ -20,6 +20,7 @@ export function createHandler(data = store) {
         for await (const chunk of req) { size += chunk.length; if (size > 8192) throw new AppError(413, 'Request body is too large.'); chunks.push(chunk); }
         body = JSON.parse(Buffer.concat(chunks).toString('utf8'));
       }
+      if (path === '/api/checkin') return send(200, { checkin: data.checkIn(body) });
       return send(200, { booking: data.reserve(body) });
     } catch (error) {
       const status = error instanceof AppError ? error.status : error instanceof SyntaxError ? 400 : 500;

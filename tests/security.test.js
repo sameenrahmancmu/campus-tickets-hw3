@@ -7,3 +7,8 @@ test('SEC-4: the server ignores a forged browser total and computes its own pric
     assert.equal(booking.totalCents,2400);
   }
 });
+
+test('SEC-8: a browser-supplied amount cannot change the simulated total', () => {
+  const booking = createStore().reserve({eventId:'fall-social',name:'Alex',quantity:2,simulatedPayment:true,requestId:'official-sec8',totalCents:0});
+  assert.equal(booking.totalCents,2400);
+});

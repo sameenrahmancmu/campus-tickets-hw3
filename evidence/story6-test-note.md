@@ -1,0 +1,1 @@
+The unknown-token test initially used x repeated 32 times, which is not a valid hexadecimal token. Its fixture was corrected to f repeated 32 times to test an unknown, well-formed token, rather than malformed input. The intended 404 assertion was retained. No test was removed, skipped, or weakened. The original failing-run log is preserved unchanged.

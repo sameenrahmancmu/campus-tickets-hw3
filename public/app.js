@@ -28,8 +28,20 @@ $('booking-form').addEventListener('submit', async event => {
     const response = await fetch('/api/bookings', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(pending)});
     const data = await response.json(); if (!response.ok) throw new Error(data.error || 'Reservation failed.');
     const b = data.booking; $('result').textContent = `${b.name}, you’re on the list! ${b.quantity} ticket(s) · ${money(b.totalCents)} simulated total. Confirmation: ${b.id}. No money was collected.`;
+    for (const token of b.ticketTokens || []) { const line = node('p'); line.append(node('span','Ticket code: '),node('code',token)); $('result').append(line); }
     try { await load(); } catch { $('result').append(node('p','Reservation confirmed. Refresh to update availability.')); }
   } catch (error) { $('result').textContent = error.message + ' You can retry safely using the same form.'; }
   finally { $('reserve').disabled = false; }
 });
 load().catch(error => { $('catalog-status').textContent = error.message; $('reserve').disabled = true; });
+
+$('checkin-form').addEventListener('submit', async event => {
+  event.preventDefault(); if (!$('checkin-form').reportValidity()) return;
+  $('checkin-button').disabled = true; $('checkin-result').textContent = 'Checking ticket…';
+  try {
+    const response = await fetch('/api/checkin', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:$('ticket-code').value.trim()})});
+    const data = await response.json(); if (!response.ok) throw new Error(data.error || 'Check-in failed.');
+    $('checkin-result').textContent = `Checked in: ${data.checkin.name}. This ticket is now used.`;
+  } catch(error) { $('checkin-result').textContent = error.message; }
+  finally { $('checkin-button').disabled = false; }
+});
